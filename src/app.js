@@ -11,10 +11,18 @@ const routes = require('./routes');
 
 const app = express();
 
-app.use(morgan(config.env.HTTP_LOG_CONFIG, { stream: logger.stream }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(morgan(config.env.HTTP_LOG_CONFIG, { stream: logger.stream }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(routes);
+// app.use(routes);
+
+app.post('/', function(req, res) {
+  res.redirect(307, 'http://google.com');
+});
+
+app.get('/', function(req, res) {
+  res.redirect(307, 'http://yandex.ru');
+});
 
 module.exports = app;
